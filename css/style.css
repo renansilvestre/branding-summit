@@ -161,6 +161,22 @@ header.scrolled {
     -webkit-backdrop-filter: blur(10px);
 }
 
+/* Ajuste para botões em mobile */
+@media (max-width: 640px) {
+    .bg-brand-green,
+    .border-brand-green,
+    a[href="#inscricao"] {
+        padding: 1rem 1.5rem;
+        line-height: 1.4;
+        min-height: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+    }
+}
+
 /* ==============================================
    8. ANIMAÇÕES PERSONALIZADAS
    ============================================== */
