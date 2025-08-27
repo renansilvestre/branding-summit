@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branding Summit Festival 2025 | O Movimento</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js for Interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Custom Styles for Creative Look */
+        body {
+            background-color: #10101A;
+            background-image: radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.1), transparent 30%),
+                              radial-gradient(circle at 80% 90%, rgba(147, 51, 234, 0.1), transparent 30%);
+            color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-anton {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        .brand-green { color: #39ff14; }
+        .bg-brand-green { background-color: #39ff14; }
+        .brand-purple { color: #9333ea; }
+        .glow-hover:hover { box-shadow: 0 0 12px #39ff14, 0 0 24px #39ff14; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a2a; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #39ff14, #9333ea); border-radius: 4px; }
+    </style>
+</head>
+<body x-data="pageData">
+
+    <!-- Header -->
+    <header x-data="{ scrolled: false }" @scroll.window="scrolled = (window.scrollY > 50)" 
+            :class="{ 'bg-black/80 backdrop-blur-sm': scrolled, 'bg-transparent': !scrolled }" 
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-anton text-white">BRANDING SUMMIT <span class="brand-green">2025</span></a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#movimento" class="text-white hover:brand-green transition-colors duration-300">O Movimento</a>
+                <a href="#vanguardistas" class="text-white hover:brand-green transition-colors duration-300">Programação</a>
+                <a href="#para-quem-e" class="text-white hover:brand-green transition-colors duration-300">Para Quem é</a>
+                <a href="#inscricao" class="text-white hover:brand-green transition-colors duration-300">Inscrição</a>
+                <a href="#faq" class="text-white hover:brand-green transition-colors duration-300">FAQ</a>
+            </nav>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden z-50">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path><path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" x-transition class="md:hidden absolute top-0 inset-x-0 p-2 z-40">
+            <div class="rounded-2xl shadow-lg bg-gray-900/80 backdrop-blur-md">
+                <div class="p-5">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="text-2xl font-anton text-white">BS <span class="brand-green">2025</span></a>
+                        <button @click="mobileMenuOpen = false" class="-mr-2"><svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    </div>
+                    <nav class="mt-6 grid gap-y-8 text-center">
+                        <a @click="mobileMenuOpen = false" href="#movimento" class="text-lg font-medium text-white hover:brand-green">O Movimento</a>
+                        <a @click="mobileMenuOpen = false" href="#vanguardistas" class="text-lg font-medium text-white hover:brand-green">Vanguardistas</a>
+                        <a @click="mobileMenuOpen = false" href="#para-quem-e" class="text-lg font-medium text-white hover:brand-green">Para Quem é</a>
+                        <a @click="mobileMenuOpen = false" href="#inscricao" class="text-lg font-medium text-white hover:brand-green">Inscrição</a>
+                        <a @click="mobileMenuOpen = false" href="#faq" class="text-lg font-medium text-white hover:brand-green">FAQ</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="min-h-screen flex items-center justify-center text-center relative overflow-hidden pt-20">
+            <img src="src/capa-palestrantes-branding-summit-2025.jpg" alt="Palestrantes do Branding Summit 2025" class="absolute inset-0 w-full h-full object-cover z-0 opacity-35">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#10101A] via-[#10101A]/10 to-transparent z-10"></div>
+            <div class="container mx-auto px-6 relative z-20" data-aos="fade-up">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-anton uppercase text-white leading-tight">Marcas Estáticas <br class="hidden md:block"/> Não Criam <span class="brand-green">Futuro.</span></h1>
+                <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">Junte-se ao movimento que está na vanguarda do branding no Brasil.</p>
+                <p class="mt-4 text-base md:text-lg max-w-3xl mx-auto text-gray-400">O Branding Summit Festival 2025 é um evento 100% online e ao vivo, de 20 a 24 de outubro, e que chega na sua terceira edição. Mais de 20 experts nacionais e internacionais reunidos para transformar sua visão e trazer as melhores práticas de gestão, criação e estratégias de marcas.</p>
+                <div class="mt-10">
+                    <a href="#inscricao" class="bg-brand-green text-black font-bold uppercase py-4 px-10 rounded-full text-lg transition-transform duration-300 hover:scale-105 glow-hover">GARANTIR MEU LUGAR NO MOVIMENTO</a>
+                    <p class="mt-4 text-sm text-gray-400">Lote Promocional por tempo limitado!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: O Movimento -->
+        <section id="movimento" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center max-w-4xl" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-anton uppercase">O mundo das marcas se move sem pedir licença. <br/> <span class="brand-green">Você se move no mesmo ritmo?</span></h2>
+                <p class="mt-6 text-lg text-gray-300 leading-relaxed">Fórmulas que precisam ser revistas urgentemente, dados, dados, dados, AI, mock ups, motion design, etc. Em um mundo que acelera a cada novo dia, a estagnação é o maior risco para qualquer estrategista de marca que precisa continuar sendo relevante. O Branding Summit Festival chega na sua terceira edição como um movimento anti-irrelevância. É o lugar para quem entende que Branding não é um ponto de chegada, mas um ponto de partida.</p>
+                <!-- <div class="mt-12 aspect-video max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-2xl shadow-2xl shadow-brand-purple/20 w-full h-full"></iframe>
+                </div>
+            </div> -->
+        </section>
+
+        <!-- Section 3: Benefícios -->
+        <section class="py-20 md:py-32 relative overflow-hidden">
+             <div class="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 w-[800px] h-[800px] bg-brand-purple/10 rounded-full blur-3xl"></div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-anton uppercase">5 dias de imersão para colocar <br/> <span class="brand-green">sua marca e sua carreira em movimento.</span></h2>
+                    <p class="mt-6 text-lg text-gray-300 leading-relaxed">Reunimos as mentes que estão construindo o futuro do branding para compartilhar insights, estratégias e ferramentas práticas. Aqui, você não vai apenas assistir a palestras. Você vai destravar uma nova visão sobre como criar, gerir e escalar marcas que geram impacto real.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-brand-green">
+                        <div class="h-24 w-24 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-4 border border-white/10 overflow-hidden"><img src="src/Visao-estrategica.png" alt="Ícone Visão Estratégica" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold mt-4">Visão Estratégica</h3>
+                        <p class="mt-2 text-gray-400">Aprenda com os líderes de grandes projetos e descubra as tendências que definirão a próxima década do branding.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-brand-green">
+                         <div class="h-24 w-24 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-4 border border-white/10 overflow-hidden"><img src="src/Ferramentas-praticas.png" alt="Ícone Ferramentas Práticas" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold mt-4">Ferramentas Práticas</h3>
+                        <p class="mt-2 text-gray-400">Saia com métodos e frameworks aplicáveis para seus projetos, desde a pesquisa e estratégia até o design e a ativação.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-brand-green">
+                         <div class="h-24 w-24 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-4 border border-white/10 overflow-hidden"><img src="src/Conexoes-reais.png" alt="Ícone Conexões Reais" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold mt-4">Conexões Reais</h3>
+                        <p class="mt-2 text-gray-400">Faça parte de uma comunidade vibrante de profissionais que, como você, são apaixonados por construir marcas relevantes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Section 4: Vanguardistas (Palestrantes e Programação) -->
+<section id="vanguardistas" class="py-20 md:py-32">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-anton uppercase">A Vanguarda do Movimento: <br/> <span class="brand-green">Palestrantes e Programação</span></h2>
+            <p class="mt-6 text-lg text-gray-300 leading-relaxed">Um line-up formado por profissionais que estão na linha de frente, no Brasil e no mundo, moldando marcas globais, desafiando o status quo e construindo o futuro do nosso mercado. Prepare-se para aprender com quem faz.</p>
+        </div>
+
+        <!-- Grid de Palestrantes -->
+        <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8" data-aos="fade-up" data-aos-delay="200">
+            <!-- Palestrante 1 -->
+            <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Marcos-Hiller-300x300.jpg" alt="Marcos Hiller" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Marcos Hiller</h3>
+                <p class="text-sm text-gray-400">Organizador e Idealizador</p>
+            </div>
+            <!-- Palestrante 2 -->
+            <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Guillermo-Brotons-300x300.jpg" alt="Guillermo Brotons" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Guillermo Brotons</h3>
+                <p class="text-sm text-gray-400">Creative Director, Decimal</p>
+            </div>
+            <!-- ... Repita para todos os 20 palestrantes ... -->
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Fernando-Gavronski-300x300.jpg" alt="Fernando Gavronski" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Fernando Gavronski</h3>
+                <p class="text-sm text-gray-400">Visual Designer, HOUSE AD</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Cecilia-Rapassi-300x300.jpg" alt="Cecília Rapassi" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Cecília Rapassi</h3>
+                <p class="text-sm text-gray-400">Fundadora, Gouvêa Fashion</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Wendel-Teixeira-300x300.jpg" alt="Wendel Albuquerque" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Wendel Albuquerque</h3>
+                <p class="text-sm text-gray-400">Fundador, Repente</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Rosangela-Martins-300x300.jpg" alt="Rosângela Martins" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Rosângela Martins</h3>
+                <p class="text-sm text-gray-400">Gerente de Marketing</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Alexandre-Salvador-300x300.jpg" alt="Alexandre Salvador" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Alexandre Salvador</h3>
+                <p class="text-sm text-gray-400">Coordenador, ESPM</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Rafael-Rez-300x300.jpg" alt="Rafael Rez" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Rafael Rez</h3>
+                <p class="text-sm text-gray-400">CMO, Web Estratégica</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Bruna-Rocha-300x300.jpg" alt="Bruna Rocha" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Bruna Rocha</h3>
+                <p class="text-sm text-gray-400">Designer, Branda Design</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Joao-Paulo-Coelho-300x300.jpg" alt="João Paulo Coelho" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">João Paulo Coelho</h3>
+                <p class="text-sm text-gray-400">CEO, EZCUZÊ</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Haley-Allen-300x300.jpg" alt="Haley Allen" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Haley Allen</h3>
+                <p class="text-sm text-gray-400">Producer, Champions Design</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Gabriel-Lopes-300x300.jpg" alt="Gabriel Lopes" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Gabriel Lopes</h3>
+                <p class="text-sm text-gray-400">CEO, Moonshot</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Renan-Silvestre-300x300.jpg" alt="Renan Silvestre" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Renan Silvestre</h3>
+                <p class="text-sm text-gray-400">Fundador, Deep Metrics</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Silvia-Beraldo-300x300.jpg" alt="Silvia Beraldo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Silvia Beraldo</h3>
+                <p class="text-sm text-gray-400">Especialista em Presença</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Fael-Ferreira-300x300.jpg" alt="Fael Ferreira Borges" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Fael Ferreira Borges</h3>
+                <p class="text-sm text-gray-400">Estrategista de Marcas</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Gui-Vieira-300x300.jpg" alt="Guilherme Vieira" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Guilherme Vieira</h3>
+                <p class="text-sm text-gray-400">Diretor de Criação, WINSTON</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Ligia-Figueiredo-300x300.jpg" alt="Ligia Figueiredo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Ligia Figueiredo</h3>
+                <p class="text-sm text-gray-400">COO, Vero Brodo</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Carmen-Leonel-300x300.jpg" alt="Carmen Leonel" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Carmen Leonel</h3>
+                <p class="text-sm text-gray-400">CEO, TREIDEH</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Andre-Luis-300x300.jpg" alt="André Luis Corrêa" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">André Luis Corrêa</h3>
+                <p class="text-sm text-gray-400">Fundador, Toomorrow</p>
+            </div>
+             <div class="group text-center">
+                <div class="relative aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-brand-green transition-all duration-300">
+                    <img src="src/Mauricio-Brandt-300x300.jpg" alt="Mauricio Brandt" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-all duration-500"></div>
+                </div>
+                <h3 class="mt-4 font-bold text-lg">Mauricio Brandt</h3>
+                <p class="text-sm text-gray-400">Founder, FUTURE NATIVES</p>
+            </div>
+        </div>
+        
+        <!-- Programação Estática -->
+        <div class="mt-20 max-w-7xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl font-anton uppercase text-center">Explore a <span class="brand-green">jornada dia a dia.</span></h3>
+            <div class="mt-8 space-y-12">
+                
+                <!-- Dia 1 -->
+                <div>
+                    <h4 class="text-2xl font-bold brand-green border-b-2 border-brand-green/30 pb-2 mb-6">SEGUNDA - 20/10</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col">
+                            <p class="font-bold text-lg">19h</p>
+                            <p class="text-white mt-2 flex-grow">Boas vindas e abertura do evento com o case do novo approach de marca da Trevisan Escola de Negócios</p>
+                            <div class="flex items-center mt-4 pt-4 border-t border-white/10">
+                                <img src="src/Marcos-Hiller-300x300.jpg" alt="Marcos Hiller" class="w-16 h-16 rounded-full mr-4">
+                                <p class="text-gray-400 text-sm">Marcos Hiller</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dia 2 -->
+                <div>
+                    <h4 class="text-2xl font-bold brand-green border-b-2 border-brand-green/30 pb-2 mb-6">TERÇA - 21/10</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h</p><p class="text-white mt-2 flex-grow">Creating branded digital experiences: elevating brand presence online through interactive design and technology.</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Guillermo-Brotons-300x300.jpg" alt="Guillermo Brotons" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Guillermo Brotons</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h40</p><p class="text-white mt-2 flex-grow">Marcas clássicas, territórios desconhecidos: a Premier League na Web3.</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Fernando-Gavronski-300x300.jpg" alt="Fernando Gavronski" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Fernando Gavronski</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">10h20</p><p class="text-white mt-2 flex-grow">"Marca ou Mercadoria: a moda em tempos de desintermediação"</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Cecilia-Rapassi-300x300.jpg" alt="Cecília Rapassi" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Cecília Rapassi</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h</p><p class="text-white mt-2 flex-grow">Branding como gerador de valor além das grandes marcas</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Wendel-Teixeira-300x300.jpg" alt="Wendel Albuquerque" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Wendel Albuquerque</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h40</p><p class="text-white mt-2 flex-grow">Conquistar Corações e Mentes</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Rosangela-Martins-300x300.jpg" alt="Rosângela Martins" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Rosângela Martins</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">17h20</p><p class="text-white mt-2 flex-grow">Gestão de crise de imagem de marca num mundo com excesso de dados</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Alexandre-Salvador-300x300.jpg" alt="Alexandre Salvador" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Alexandre Salvador</p></div></div>
+                    </div>
+                </div>
+
+                <!-- Dia 3 -->
+                <div>
+                    <h4 class="text-2xl font-bold brand-green border-b-2 border-brand-green/30 pb-2 mb-6">QUARTA - 22/10</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h</p><p class="text-white mt-2 flex-grow">Grande conteúdo constrói grandes marcas.</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Rafael-Rez-300x300.jpg" alt="Rafael Rez" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Rafael Rez</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h40</p><p class="text-white mt-2 flex-grow">Design que orienta: escuta como ponto de partida.</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Bruna-Rocha-300x300.jpg" alt="Bruna Rocha" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Bruna Rocha</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">10h20</p><p class="text-white mt-2 flex-grow">Branding fora do script: como construir marcas fora do script que todo mundo faz.</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Joao-Paulo-Coelho-300x300.jpg" alt="João Paulo Coelho" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">João Paulo Coelho</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h</p><p class="text-white mt-2 flex-grow">Recipes for Growth: How One Project Fed the Neighborhood - and A New Pipeline of Work</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Haley-Allen-300x300.jpg" alt="Haley Allen" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Haley Allen</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h40</p><p class="text-white mt-2 flex-grow">Navegando a Era da Complexidade: Design Emergentee Conexões Reais</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Gabriel-Lopes-300x300.jpg" alt="Gabriel Lopes" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Gabriel Lopes</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">17h20</p><p class="text-white mt-2 flex-grow">Como medir resultados em Branding</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Renan-Silvestre-300x300.jpg" alt="Renan Silvestre" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Renan Silvestre</p></div></div>
+                    </div>
+                </div>
+
+                <!-- Dia 4 -->
+                <div>
+                    <h4 class="text-2xl font-bold brand-green border-b-2 border-brand-green/30 pb-2 mb-6">QUINTA - 23/10</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h</p><p class="text-white mt-2 flex-grow">Código GPS: Como a sua Presença Constrói o Futuro da sua Carreira</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Silvia-Beraldo-300x300.jpg" alt="Silvia Beraldo" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Silvia Beraldo</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h40</p><p class="text-white mt-2 flex-grow">Brand refresh: como e quando atualizar uma marca</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Fael-Ferreira-300x300.jpg" alt="Fael Ferreira Borges" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Fael Ferreira Borges</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">10h20</p><p class="text-white mt-2 flex-grow">Design & AI: uma parceria indissociável?</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Guilherme Vieira-300x300.jpg" alt="Gui-Vieira" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Guilherme Vieira</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h</p><p class="text-white mt-2 flex-grow">Marcas com propósito em territórios inexplorados: não existe receita, mas existem caminhos</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Ligia-Figueiredo-300x300.jpg" alt="Ligia Figueiredo" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Ligia Figueiredo</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">16h40</p><p class="text-white mt-2 flex-grow">Quem é você na fila do pão do branding?</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Carmen-Leonel-300x300.jpg" alt="Carmen Leonel" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Carmen Leonel</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">17h20</p><p class="text-white mt-2 flex-grow">Como transformar negócios tradicionais em "Marcas do Amanhã"</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Andre-Luis-300x300.jpg" alt="André Luis Corrêa" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">André Luis Corrêa</p></div></div>
+                    </div>
+                </div>
+
+                <!-- Dia 5 -->
+                <div>
+                    <h4 class="text-2xl font-bold brand-green border-b-2 border-brand-green/30 pb-2 mb-6">SEXTA - 24/10</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">9h</p><p class="text-white mt-2 flex-grow">Marcas do futuro, engajamento e a busca por uma nova persuasão publicitária</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Mauricio-Brandt-300x300.jpg" alt="Mauricio Brandt" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Mauricio Brandt</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">10h</p><p class="text-white mt-2 flex-grow">BRANDING STAND UP COMEDY</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="https://placehold.co/64x64/1a1a1a/9333ea?text=BS" alt="Branding Stand Up Comedy" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Um papo sobre erros, fracassos, falhas e constrangimentos do universo do branding</p></div></div>
+                        <div class="glass-card rounded-2xl p-6 h-full flex flex-col"><p class="font-bold text-lg">11h</p><p class="text-white mt-2 flex-grow">Encerramento</p><div class="flex items-center mt-4 pt-4 border-t border-white/10"><img src="src/Marcos-Hiller-300x300.jpg" alt="Marcos Hiller" class="w-16 h-16 rounded-full mr-4"><p class="text-gray-400 text-sm">Marcos Hiller</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Section 5: Para Quem é -->
+        <section id="para-quem-e" class="py-20 md:py-32 relative overflow-hidden">
+             <div class="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 w-[800px] h-[800px] bg-brand-green/10 rounded-full blur-3xl"></div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-anton uppercase">Liderar projetos de marcas que encantam também é a sua paixão?<br/> <span class="brand-green">Seu lugar é aqui.</span></h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card text-center p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="aspect-video bg-white/5 rounded-xl mb-4 flex items-center justify-center border border-white/10 overflow-hidden"><img src="src/consultores-agencias.jpg" alt="Consultores e Agências" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold">Consultores e Agências</h3>
+                        <p class="mt-2 text-gray-400">Para quem busca refinar processos, descobrir novas ferramentas e entregar mais valor estratégico.</p>
+                    </div>
+                    <div class="glass-card text-center p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="aspect-video bg-white/5 rounded-xl mb-4 flex items-center justify-center border border-white/10 overflow-hidden"><img src="src/profissionais-marketing-branding.jpg" alt="Profissionais de Branding e Marketing" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold">Profissionais de Branding e Marketing</h3>
+                        <p class="mt-2 text-gray-400">Para quem precisa ir além das métricas e construir marcas fortes que geram crescimento sustentável.</p>
+                    </div>
+                    <div class="glass-card text-center p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="aspect-video bg-white/5 rounded-xl mb-4 flex items-center justify-center border border-white/10 overflow-hidden"><img src="src/designers-criativos.jpg" alt="Designers e Criativos" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold">Designers e Criativos</h3>
+                        <p class="mt-2 text-gray-400">Para quem quer conectar estética com estratégia, criando identidades e experiências que geram resultados.</p>
+                    </div>
+                    <div class="glass-card text-center p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="aspect-video bg-white/5 rounded-xl mb-4 flex items-center justify-center border border-white/10 overflow-hidden"><img src="src/empreendedores-gestores.jpg" alt="Empreendedores e Gestores" class="w-full h-full object-cover"></div>
+                        <h3 class="text-2xl font-bold">Empreendedores e Gestores</h3>
+                        <p class="mt-2 text-gray-400">Para quem lidera negócios e entende que uma marca forte é o seu ativo mais valioso para competir.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Inscrição -->
+        <section id="inscricao" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-anton uppercase">Escolha seu ingresso e <br/> <span class="brand-green">impulsione sua carreira.</span></h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-8 rounded-2xl flex flex-col">
+                        <h3 class="text-3xl font-bold">FESTIVAL AO VIVO</h3>
+                        <p class="mt-4 text-gray-400 flex-grow">Acesso completo aos 5 dias de evento com transmissão em tempo real.</p>
+                        <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><span class="brand-green mr-2">&#10003;</span> Acesso ao vivo aos 5 dias</li>
+                            <li class="flex items-center"><span class="brand-green mr-2">&#10003;</span> Interação via chat e Q&A</li>
+                            <li class="flex items-center"><span class="brand-green mr-2">&#10003;</span> Networking na comunidade</li>
+                            <li class="flex items-center"><span class="brand-green mr-2">&#10003;</span> Certificado digital</li>
+                        </ul>
+                        <div class="mt-8">
+                            <p class="text-sm text-gray-400">Lote Promo</p>
+                            <p class="text-5xl font-bold">R$ 49</p>
+                            <a href="#" class="mt-6 block w-full text-center border-2 border-brand-green text-brand-green font-bold py-3 px-6 rounded-full glow-hover hover:bg-brand-green hover:border-brand-green transition-colors duration-300">GARANTIR ACESSO AO VIVO</a>
+                        </div>
+                    </div>
+                    <div class="border-2 border-brand-green p-8 rounded-2xl flex flex-col relative bg-brand-green/5">
+                        <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-brand-green text-black text-sm font-bold px-3 py-1 rounded-full uppercase">Mais Popular</span>
+                        <h3 class="text-3xl font-bold">FESTIVAL AO VIVO + GRAVAÇÕES</h3>
+                        <p class="mt-4 text-gray-400 flex-grow">A experiência completa! Assista ao vivo e reveja todo o conteúdo por 1 ano.</p>
+                        <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><span class="brand-green mr-2">&#10003;</span> <strong>Todos os benefícios do Ao Vivo</strong></li>
+                            <li class="flex items-center"><span class="brand-green mr-2 font-bold">+</span> <strong>Acesso por 1 ano a todas as gravações editadas</strong></li>
+                        </ul>
+                        <div class="mt-8">
+                            <p class="text-sm text-gray-400">Lote Promo</p>
+                            <p class="text-5xl font-bold">R$ 197</p>
+                            <a href="#" class="mt-6 block w-full text-center bg-brand-green text-black font-bold py-3 px-6 rounded-full glow-hover transition-transform duration-300 hover:scale-105">QUERO ACESSO COMPLETO</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-gray-400" data-aos="fade-up">Atenção: Os preços sobem a cada virada de lote. Garanta o melhor valor agora!</p>
+            </div>
+        </section>
+
+        <!-- Section 7: Anfitrião -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-10 items-center max-w-5xl mx-auto" data-aos="fade-up">
+                    <div class="md:col-span-2">
+                        <img src="src/Marcos-Hiller.jpg" alt="Marcos Hiller" class="rounded-3xl w-full">
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl md:text-4xl font-anton uppercase">Um movimento idealizado por <br/> <span class="brand-green">quem respira branding.</span></h2>
+                        <p class="mt-6 text-lg text-gray-300 leading-relaxed">Marcos Hiller é doutor e mestre em comunicação e práticas do consumo pela ESPM, onde atuou como pesquisador visitante na Erasmus Rotterdam University (Holanda). Nos últimos 20 anos tem atuado no mercado brasileiro e internacional como um dos mais respeitados entusiastas e experts das disciplinas de branding, onde já liderou projetos de dezenas de marcas. Foi o único brasileiro selecionado no time de mentores da primeira edição do Festival SXSW Londres 2025. Leciona hoje nos cursos de pós-graduação e MBA executivo da ESPM, FIA e FGV. Hoje é sócio-fundador da The Hiller and Branding, uma consultoria full-service que atua com projetos de branding, posicionamento de marcas, pesquisa e educação executiva junto a clientes como Ambev, Aché, Bayer, Renault, Pirelli, BMW Motorrad, CP+B, Bauducco e Mondellez.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: FAQ -->
+        <section id="faq" class="py-20 md:py-32" x-data="{ openFaq: null }">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-anton uppercase">Ainda tem dúvidas? <br/> <span class="brand-green">A gente responde.</span></h2>
+                </div>
+                <div class="mt-12 space-y-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">O evento é online ou presencial?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 1}">+</span>
+                        </button>
+                        <div x-show="openFaq === 1" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>O Branding Summit Festival 2025 é 100% online e ao vivo. Você pode assistir de qualquer lugar do mundo.</p></div>
+                    </div>
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">Como vou receber o acesso para assistir?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 2}">+</span>
+                        </button>
+                        <div x-show="openFaq === 2" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>No dia do evento, você receberá por e-mail um link exclusivo para acessar a nossa sala de transmissão. Simples e rápido.</p></div>
+                    </div>
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">As palestras ficam gravadas?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 3}">+</span>
+                        </button>
+                        <div x-show="openFaq === 3" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>Depende do ingresso que você escolher! O ingresso "Festival Ao Vivo" dá direito a assistir somente às transmissões em tempo real. Já o ingresso "Festival Ao Vivo + Gravações" garante acesso por 1 ano a todas as palestras editadas, para você rever quando e quantas vezes quiser.</p></div>
+                    </div>
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 4 ? null : 4" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">E se eu não puder assistir a uma palestra ao vivo?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 4}">+</span>
+                        </button>
+                        <div x-show="openFaq === 4" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>Para não perder nenhum conteúdo, recomendamos o ingresso "Festival Ao Vivo + Gravações". Com ele, mesmo que você perca alguma palestra ao vivo, poderá assisti-la depois com toda a tranquilidade.</p></div>
+                    </div>
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 5 ? null : 5" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">O pagamento é seguro?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 5}">+</span>
+                        </button>
+                        <div x-show="openFaq === 5" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>Sim! Todos os pagamentos são processados pela Sympla, a maior e mais segura plataforma de eventos do Brasil.</p></div>
+                    </div>
+                    <div class="glass-card rounded-2xl">
+                        <button @click="openFaq = openFaq === 6 ? null : 6" class="w-full flex justify-between items-center p-6 text-left">
+                            <span class="text-xl font-medium">Receberei certificado?</span>
+                            <span class="text-2xl brand-green transform transition-transform" :class="{'rotate-45': openFaq === 6}">+</span>
+                        </button>
+                        <div x-show="openFaq === 6" x-collapse.duration.500ms class="px-6 pb-6 text-gray-300"><p>Sim! Todos os participantes que acompanharem o evento receberão um certificado digital de participação ao final da semana.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Final CTA -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-anton uppercase">O futuro não espera por <br/> <span class="brand-green">marcas estáticas.</span></h2>
+                <p class="mt-6 text-lg max-w-2xl mx-auto text-gray-300">A decisão de colocar sua marca e sua carreira em movimento é sua. O Branding Summit é o impulso que você precisa. Vamos juntos?</p>
+                <div class="mt-10">
+                    <a href="#inscricao" class="bg-brand-green text-black font-bold uppercase py-4 px-10 rounded-full text-lg transition-transform duration-300 hover:scale-105 glow-hover">Sim, quero fazer parte do movimento</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 bg-black/50">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Branding Summit Festival. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('pageData', () => ({
+                mobileMenuOpen: false,
+                speakers: [
+                    { name: 'Marcos Hiller', title: 'Organizador e Idealizador', img: 'src/Marcos-Hiller-300x300.jpg' },
+                    { name: 'Guillermo Brotons', title: 'Creative Director, Decimal', img: 'src/Guillermo-Brotons-300x300.jpg' },
+                    { name: 'Fernando Gavronski', title: 'Visual Designer, HOUSE AD', img: 'src/Fernando-Gavronski-300x300.jpg' },
+                    { name: 'Cecília Rapassi', title: 'Fundadora, Flash on Business', img: 'src/Cecilia-Rapassi-300x300.jpg' },
+                    { name: 'Wendel Albuquerque', title: 'Fundador, Repente', img: 'src/Wendel-Teixeira-300x300.jpg' },
+                    { name: 'Rosângela Martins', title: 'Gerente de Marketing', img: 'src/Rosangela-Martins-300x300.jpg' },
+                    { name: 'Alexandre Salvador', title: 'Coordenador, ESPM', img: 'src/Alexandre-Salvador-300x300.jpg' },
+                    { name: 'Rafael Rez', title: 'CMO, Web Estratégica', img: 'src/Rafael-Rez-300x300.jpg' },
+                    { name: 'Bruna Rocha', title: 'Designer, Branda Design', img: 'src/Bruna-Rocha-300x300.jpg' },
+                    { name: 'João Paulo Coelho', title: 'CEO, EZCUZÊ', img: 'src/Joao-Paulo-Coelho-300x300.jpg' },
+                    { name: 'Haley Allen', title: 'Producer, Champions Design', img: 'src/Haley-Allen-300x300.jpg' },
+                    { name: 'Gabriel Lopes', title: 'CEO, Moonshot', img: 'src/Gabriel-Lopes-300x300.jpg' },
+                    { name: 'Renan Silvestre', title: 'Fundador, Deep Metrics', img: 'src/Renan-Silvestre-300x300.jpg' },
+                    { name: 'Silvia Beraldo', title: 'Especialista em Presença', img: 'src/Silvia-Beraldo-300x300.jpg' },
+                    { name: 'Fael Ferreira Borges', title: 'Estrategista de Marcas', img: 'src/Fael-Ferreira-300x300.jpg' },
+                    { name: 'Guilherme Vieira', title: 'Diretor de Criação, WINSTON', img: 'src/Gui-Vieira-300x300.jpg' },
+                    { name: 'Ligia Figueiredo', title: 'COO, Vero Brodo', img: 'src/Ligia-Figueiredo-300x300.jpg' },
+                    { name: 'Carmen Leonel', title: 'CEO, TREIDEH', img: 'src/Carmen-Leonel-300x300.jpg' },
+                    { name: 'André Luis Corrêa', title: 'Fundador, Toomorrow', img: 'src/Andre-Luis-300x300.jpg' },
+                    { name: 'Mauricio Brandt', title: 'Founder, FUTURE NATIVES', img: 'src/Mauricio-Brandt-300x300.jpg' },
+                ],
+                scheduleData: {
+                    segunda: {
+                        title: 'SEGUNDA - 20/10',
+                        talks: [ { time: '19h', title: 'Boas vindas e abertura do evento com o case do novo approach de marca da Trevisan Escola de Negócios', speaker: 'Marcos Hiller', img: 'src/Marcos-Hiller-300x300.jpg' } ]
+                    },
+                    terca: {
+                        title: 'TERÇA - 21/10',
+                        talks: [
+                            { time: '9h', title: 'Creating branded digital experiences: elevating brand presence online through interactive design and technology.', speaker: 'Guillermo Brotons', img: 'src/Guillermo-Brotons-300x300.jpg' },
+                            { time: '9h40', title: 'Marcas clássicas, territórios desconhecidos: a Premier League na Web3.', speaker: 'Fernando Gavronski', img: 'src/Fernando-Gavronski-300x300.jpg' },
+                            { time: '10h20', title: '"Marca ou Mercadoria: a moda em tempos de desintermediação"', speaker: 'Cecília Rapassi', img: 'src/Cecilia-Rapassi-300x300.jpg' },
+                            { time: '16h', title: 'Branding como gerador de valor além das grandes marcas', speaker: 'Wendel Albuquerque', img: 'src/Wendel-Teixeira-300x300.jpg' },
+                            { time: '16h40', title: 'Conquistar Corações e Mentes', speaker: 'Rosângela Martins', img: 'src/Rosangela-Martins-300x300.jpg' },
+                            { time: '17h20', title: 'Gestão de crise de imagem de marca num mundo com excesso de dados', speaker: 'Alexandre Salvador', img: 'src/Alexandre-Salvador-300x300.jpg' }
+                        ]
+                    },
+                    quarta: {
+                        title: 'QUARTA - 22/10',
+                        talks: [
+                            { time: '9h', title: 'Grande conteúdo constrói grandes marcas.', speaker: 'Rafael Rez', img: 'src/Rafael-Rez-300x300.jpg' },
+                            { time: '9h40', title: 'Design que orienta: escuta como ponto de partida.', speaker: 'Bruna Rocha', img: 'src/Bruna-Rocha-300x300.jpg' },
+                            { time: '10h20', title: 'Branding fora do script: como construir marcas fora do script que todo mundo faz.', speaker: 'João Paulo Coelho', img: 'src/Joao-Paulo-Coelho-300x300.jpg' },
+                            { time: '16h', title: 'Recipes for Growth: How One Project Fed the Neighborhood - and A New Pipeline of Work', speaker: 'Haley Allen', img: 'src/Haley-Allen-300x300.jpg' },
+                            { time: '16h40', title: 'Navegando a Era da Complexidade: Design Emergentee Conexões Reais', speaker: 'Gabriel Lopes', img: 'src/Gabriel-Lopes-300x300.jpg' },
+                            { time: '17h20', title: 'Como medir resultados em Branding', speaker: 'Renan Silvestre', img: 'src/Renan-Silvestre-300x300.jpg' }
+                        ]
+                    },
+                    quinta: {
+                        title: 'QUINTA - 23/10',
+                        talks: [
+                            { time: '9h', title: 'Código GPS: Como a sua Presença Constrói o Futuro da sua Carreira', speaker: 'Silvia Beraldo', img: 'src/Silvia-Beraldo-300x300.jpg' },
+                            { time: '9h40', title: 'Brand refresh: como e quando atualizar uma marca', speaker: 'Fael Ferreira Borges', img: 'src/Fael-Ferreira-300x300.jpg' },
+                            { time: '10h20', title: 'Design & AI: uma parceria indissociável?', speaker: 'Guilherme Vieira', img: 'src/Gui-Vieira-300x300.jpg' },
+                            { time: '16h', title: 'Marcas com propósito em territórios inexplorados: não existe receita, mas existem caminhos', speaker: 'Ligia Figueiredo', img: 'src/Ligia-Figueiredo-300x300.jpg' },
+                            { time: '16h40', title: 'Quem é você na fila do pão do branding?', speaker: 'Carmen Leonel', img: 'src/Carmen-Leonel-300x300.jpg' },
+                            { time: '17h20', title: 'Como transformar negócios tradicionais em "Marcas do Amanhã"', speaker: 'André Luis Corrêa', img: 'src/Andre-Luis-300x300.jpg' }
+                        ]
+                    },
+                    sexta: {
+                        title: 'SEXTA - 24/10',
+                        talks: [
+                            { time: '9h', title: 'Marcas do futuro, engajamento e a busca por uma nova persuasão publicitária', speaker: 'Mauricio Brandt', img: 'src/Mauricio-Brandt-300x300.jpg' },
+                            { time: '10h', title: 'BRANDING STAND UP COMEDY', speaker: 'Um papo sobre erros, fracassos, falhas e constrangimentos do universo do branding', img: 'https://placehold.co/64x64/1a1a1a/9333ea?text=BS' },
+                            { time: '11h', title: 'Encerramento', speaker: 'Marcos Hiller', img: 'src/Marcos-Hiller-300x300.jpg' }
+                        ]
+                    }
+                }
+            }));
+        });
+
+        // Initialize AOS (Animate on Scroll)
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 800,
+                once: true,
+            });
+        });
+    </script>
+</body>
+</html>
