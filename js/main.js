@@ -14,7 +14,7 @@ const eventData = {
         { name: 'Fernando Gavronski', title: 'Visual Designer na HOUSE AD', img: 'img/fernando-gavronski-300x300.jpg' },
         { name: 'Cecília Rapassi', title: 'Fundadora da Flash on Business', img: 'img/cecilia-rapassi-300x300.jpg' },
         { name: 'Wendel Albuquerque', title: 'Fundador da Repente', img: 'img/wendel-teixeira-300x300.jpg' },
-        { name: 'Rosângela Martins', title: 'Gerente de Marketing', img: 'img/rosangela-martins-300x300.jpg' },
+        { name: 'Rosângela Martins', title: 'Gerente de Marketing na Rede Nacional Inn', img: 'img/rosangela-martins-300x300.jpg' },
         { name: 'Alexandre Salvador', title: 'Professor e Coordenador na ESPM', img: 'img/alexandre-salvador-300x300.jpg' },
         { name: 'Rafael Rez', title: 'CMO da Web Estratégica', img: 'img/rafael-rez-300x300.jpg' },
         { name: 'Bruna Rocha', title: 'Designer na Branda Design', img: 'img/bruna-rocha-300x300.jpg' },
@@ -25,9 +25,9 @@ const eventData = {
         { name: 'Silvia Beraldo', title: 'Especialista em Presença', img: 'img/silvia-beraldo-300x300.jpg' },
         { name: 'Fael Ferreira Borges', title: 'Estrategista de Marcas', img: 'img/fael-ferreira-300x300.jpg' },
         { name: 'Guilherme Vieira', title: 'Diretor de Criação na WINSTON', img: 'img/gui-vieira-300x300.jpg' },
-        { name: 'Ligia Figueiredo', title: 'COO da Vero Brodo', img: 'img/ligia-figueiredo-300x300.jpg' },
+        { name: 'Ligia Figueiredo', title: 'COO da Vero Brodo e Fundadora da Pupa Baby', img: 'img/ligia-figueiredo-300x300.jpg' },
         { name: 'Carmen Leonel', title: 'CEO da TREIDEH', img: 'img/carmen-leonel-300x300.jpg' },
-        { name: 'André Luis Corrêa', title: 'Fundador da Toomorrow', img: 'img/andre-luis-300x300.jpg' },
+        { name: 'André Corrêa', title: 'Fundador da Toomorrow', img: 'img/andre-luis-300x300.jpg' },
         { name: 'Mauricio Brandt', title: 'Founder da FUTURE NATIVES (Reino Unido)', img: 'img/mauricio-brandt-300x300.jpg' },
     ],
     
@@ -37,7 +37,7 @@ const eventData = {
             talks: [
                 { 
                     time: '19h', 
-                    title: 'Boas vindas e abertura do evento com o case do novo approach de marca da Trevisan Escola de Negócios', 
+                    title: 'Boas vindas e abertura oficial do evento', 
                     speaker: 'Marcos Hiller',
                     speakerTitle: 'Organizador e Idealizador do Branding Summit',
                     img: 'img/marcos-hiller-300x300.jpg' 
@@ -49,21 +49,21 @@ const eventData = {
             talks: [
                 { 
                     time: '9h', 
-                    title: 'Creating branded digital experiences: elevating brand presence online through interactive design and technology.', 
+                    title: 'Creating branded digital experiences: elevating brand presence online through interactive design and technology (Palestra em inglês)', 
                     speaker: 'Guillermo Brotons',
                     speakerTitle: 'Creative Director na Decimal (New York City)',
                     img: 'img/guillermo-brotons-300x300.jpg' 
                 },
                 { 
                     time: '9h40', 
-                    title: 'Marcas clássicas, territórios desconhecidos: a Premier League na Web3.', 
+                    title: 'Marcas clássicas, territórios desconhecidos: a Premier League na Web3', 
                     speaker: 'Fernando Gavronski',
                     speakerTitle: 'Visual Designer na HOUSE AD',
                     img: 'img/fernando-gavronski-300x300.jpg' 
                 },
                 { 
                     time: '10h20', 
-                    title: '"Marca ou Mercadoria: a moda em tempos de desintermediação"', 
+                    title: 'Marca ou Mercadoria: a moda em tempos de desintermediação', 
                     speaker: 'Cecília Rapassi',
                     speakerTitle: 'Fundadora da Flash on Business',
                     img: 'img/cecilia-rapassi-300x300.jpg' 
@@ -79,7 +79,7 @@ const eventData = {
                     time: '16h40', 
                     title: 'Conquistar Corações e Mentes', 
                     speaker: 'Rosângela Martins',
-                    speakerTitle: 'Gerente de Marketing',
+                    speakerTitle: 'Gerente de Marketing na Rede Nacional Inn',
                     img: 'img/rosangela-martins-300x300.jpg' 
                 },
                 { 
@@ -96,28 +96,28 @@ const eventData = {
             talks: [
                 { 
                     time: '9h', 
-                    title: 'Grande conteúdo constrói grandes marcas.', 
+                    title: 'Grande conteúdo constrói grandes marcas', 
                     speaker: 'Rafael Rez',
                     speakerTitle: 'CMO da Web Estratégica',
                     img: 'img/rafael-rez-300x300.jpg' 
                 },
                 { 
                     time: '9h40', 
-                    title: 'Design que orienta: escuta como ponto de partida.', 
+                    title: 'Design que orienta: escuta como ponto de partida', 
                     speaker: 'Bruna Rocha',
                     speakerTitle: 'Designer na Branda Design',
                     img: 'img/bruna-rocha-300x300.jpg' 
                 },
                 { 
                     time: '10h20', 
-                    title: 'Branding fora do script: como construir marcas fora do script que todo mundo faz.', 
+                    title: 'Branding fora do script: como construir marcas fora do script que todo mundo faz', 
                     speaker: 'João Paulo Coelho',
                     speakerTitle: 'CEO da EZCUZÊ',
                     img: 'img/joao-paulo-coelho-300x300.jpg' 
                 },
                 { 
                     time: '16h', 
-                    title: 'Recipes for Growth: How One Project Fed the Neighborhood - and A New Pipeline of Work', 
+                    title: 'Recipes for Growth: How One Project Fed the Neighborhood - and A New Pipeline of Work (Palestra em inglês)', 
                     speaker: 'Haley Allen',
                     speakerTitle: 'Producer na Champions Design (New York City)',
                     img: 'img/haley-allen-300x300.jpg' 
@@ -166,7 +166,7 @@ const eventData = {
                     time: '16h', 
                     title: 'Marcas com propósito em territórios inexplorados: não existe receita, mas existem caminhos', 
                     speaker: 'Ligia Figueiredo',
-                    speakerTitle: 'COO da Vero Brodo',
+                    speakerTitle: 'COO da Vero Brodo e Fundadora da Pupa Baby',
                     img: 'img/ligia-figueiredo-300x300.jpg' 
                 },
                 { 
@@ -179,7 +179,7 @@ const eventData = {
                 { 
                     time: '17h20', 
                     title: 'Como transformar negócios tradicionais em "Marcas do Amanhã"', 
-                    speaker: 'André Luis Corrêa',
+                    speaker: 'André Corrêa',
                     speakerTitle: 'Fundador da Toomorrow',
                     img: 'img/andre-luis-300x300.jpg' 
                 }
